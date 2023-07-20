@@ -1,0 +1,15 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: workercontagem-cron-scaledobject
+spec:
+  minReplicaCount: 1
+  scaleTargetRef:
+    name: workercontagem
+  triggers:
+  - type: cron
+    metadata:
+      timezone: America/Sao_Paulo
+      start: 36 23 * * *
+      end: 39 23 * * *
+      desiredReplicas: "10"
